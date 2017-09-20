@@ -1,0 +1,22 @@
+<div *ngIf='car'>
+<h2>Car Details</h2>
+<img src="{{car.image}}" />
+<h3>{{car.make}}</h3>
+<p>Model: {{car.model}}</p>
+<p>Engine: {{car.engine | turbo}}</p>
+<p>Description: {{car.description}}</p>
+<p>Price: {{car.price}}</p>
+<p>Owner: {{car.ownerName}}</p>
+<h1><a routerLink='/cars/edit/{{car.id}}'>Edit</a></h1>
+<form (ngSubmit)='onSubmit()' #commentForm='ngForm'>
+    <div>
+        <textarea id="content" name="content" [(ngModel)]='content' required></textarea>
+    </div>
+    <button type="submit" [disabled]='!commentForm.form.valid'>Comment</button>
+</form>
+<h1>Comments</h1>
+<p *ngFor='let comment of car.comments'>
+    {{comment.content}}
+    <a routerLink='/comments/edit/{{comment.id}}'>Edit</a>
+</p>
+</div>

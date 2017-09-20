@@ -1,0 +1,8 @@
+<h1>All Owners</h1>
+
+<div *ngFor='let owner of owners'>
+    <p><a routerLink='/owners/details/{{owner.id}}'>{{owner.name}}</a></p>
+    <img src="{{owner.image}}" />
+    <p>Cars: {{owner.carsLength}}</p>
+
+</div>

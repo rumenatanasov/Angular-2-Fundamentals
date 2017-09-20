@@ -1,0 +1,62 @@
+<div>
+    <h1>Create Car</h1>
+    <form (ngSubmit)='onSubmit()' #carForm='ngForm'> 
+        <div>
+            <label for="image">Image</label>
+            <input type="text" id="image" [(ngModel)]='car.image' name="image" #image='ngModel' required />
+            <div [hidden]='image.valid || image.pristine'>
+                Image is Reqquired
+            </div>
+        </div>
+
+        <div>
+            <label for="make">Make</label>
+            <input type="text" id="make" [(ngModel)]='car.make' name="make" #make='ngModel' required />
+            <div [hidden]='make.valid || make.pristine'>
+                Make is Reqquired
+            </div>
+        </div>
+
+        <div>
+            <label for="model">Model</label>
+            <input type="text" id="model" [(ngModel)]='car.model' name="model" #model='ngModel' required />
+            <div [hidden]='model.valid || model.pristine'>
+                Model is Reqquired
+            </div>
+        </div>
+
+        <div>
+            <label for="description">Description</label>
+            <input type="text" id="description" [(ngModel)]='car.description' name="description" #description='ngModel' required />
+            <div [hidden]='description.valid || description.pristine'>
+                Description is Reqquired
+            </div>
+        </div>
+
+        <div>
+            <label for="owner">Owner</label>
+            <select id="owner" name="owner" [(ngModel)]='car.owner' name="owner" #owner='ngModel' required>
+                <option *ngFor='let owner of owners' [value]='owner.id'>
+                    {{owner.name}}
+                </option>
+            </select>
+        </div>
+
+         <div>
+            <label for="price">Price</label>
+            <input type="number" id="price" [(ngModel)]='car.price' name="price" #price='ngModel' required />
+            <div [hidden]='price.valid || price.pristine'>
+                Price is Reqquired
+            </div>
+        </div>
+
+         <div>
+            <label for="engine">Engine</label>
+            <input type="text" id="engine" [(ngModel)]='car.engine' name="engine" #engine='ngModel' required />
+            <div [hidden]='engine.valid || engine.pristine'>
+                Engine is Reqquired
+            </div>
+        </div>
+        <button type="submit" [disabled]='!carForm.form.valid'>Create</button>
+    </form>
+</div>
