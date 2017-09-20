@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="text-center">
+        <button (click)='sortByMake()'>Sort By Make</button>
+        <button (click)='sortByOwner()'>Sort by Ownner</button>
+        <!-- items being paged -->
+        <div *ngFor="let item of pagedItems"><a routerLink='/car/details/{{item.id}}'>{{item.make}}</a>
+      
+        </div>
+        <car-details></car-details>
+        <!-- pager -->
+        <ul *ngIf="pager.pages" class="pagination">
+            <li>
+                <a (click)="setPage(1)">First</a>
+            </li>
+            <li>
+                <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+            </li>
+            <li *ngFor="let page of pager.pages">
+                <a (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li>
+                <a (click)="setPage(pager.currentPage + 1)">Next</a>
+            </li>
+            <li>
+                <a (click)="setPage(pager.totalPages)">Last</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,36 @@
+<h2>All Owners</h2>
+<button (click)=sortByName()>Descending</button>
+<button (click)='ascending()'>Ascending</button>
+<p *ngFor='let owner of owners'>
+
+
+    <owner-details></owner-details>
+    <div class="container">
+
+        <div *ngIf='showList' class="text-center">
+
+            <div *ngFor="let item of pagedItems">
+                <p><a routerLink="/owners/details/{{item.id}}">{{item.name}}</a></p>
+            </div>
+
+            <!-- pager -->
+            <ul *ngIf="pager.pages" class="pagination">
+                <li>
+                    <a (click)="setPage(1)">First</a>
+                </li>
+                <li>
+                    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                </li>
+                <li *ngFor="let page of pager.pages">
+                    <a (click)="setPage(page)">{{page}}</a>
+                </li>
+                <li>
+                    <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                </li>
+                <li>
+                    <a (click)="setPage(pager.totalPages)">Last</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
