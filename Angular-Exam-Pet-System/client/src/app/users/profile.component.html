@@ -1,0 +1,6 @@
+<h1>My Animals</h1>
+
+<div *ngFor='let animal of animals'>
+    <img src="{{animal.image}}" />
+    <p>{{animal.name}} <button (click)='delete(animal.id)'>Delete</button> </p>
+</div>

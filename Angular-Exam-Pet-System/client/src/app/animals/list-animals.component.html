@@ -1,0 +1,16 @@
+<h1>All Animals</h1>
+<div>
+    <input type="text" [(ngModel)]='searchText' name="searchText" />
+    <button (click)='search()'>Search</button>
+</div>
+<div *ngIf='animals.length === 0'>
+    No animals available
+</div>
+<div *ngFor='let animal of animals'>
+    <img [src]='animal.image' /> {{animal.name}}
+    <a routerLink='/animals/details/{{animal.id}}'>Animal Details</a>
+</div>
+
+
+<button [disabled]='page === 1' (click)='prevPage()'>Prev</button>
+<button [disabled]='animals.length === 0' (click)='nextPage()'>Next</button>

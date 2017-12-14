@@ -1,0 +1,34 @@
+<h1>Animal Details</h1>
+
+<div>
+    <img src={{animal.image}} />
+   <p>Name: {{animal.name}}</p> 
+   <p>Age: {{animal.age}}</p>
+   <p>Color: {{animal.color}}</p>
+   <p>Type: {{animal.type}}</p>
+   <p>Price: {{animal.price}}</p>
+   <p>Breed: {{animal.breed}}</p>
+    
+</div>
+
+<div>
+    <div>
+    <select id="reaction" name="reaction" [(ngModel)]='review.reaction'>
+        <option *ngFor='let string of ["like", "love", "haha", "wow", "sad", "angry"]'>{{string}}</option>
+    </select>
+<button (click)='react()'>React</button>
+</div>
+    <div>
+    <form #reviewForm='ngForm' (submit)='submitReview()'>
+        <div>
+        <label for="comment">Comment</label>
+        <textarea class="form-control" id="comment" name="comment" [(ngModel)]='review.comment'></textarea>
+        <div>
+        <button type="submit" class="btn btn-success" [disabled]='!reviewForm.form.valid'>Submit</button>
+</div>
+
+<div>
+    <div *ngFor='let review of reviews'>
+        {{review.reaction}} <span *ngIf='review.comment'>{{review.comment}}</span>
+    </div>
+</div>
